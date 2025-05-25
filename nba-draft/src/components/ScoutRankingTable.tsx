@@ -7,7 +7,6 @@ import {
     TableRow,
     Typography,
     Box,
-    Paper,
 } from "@mui/material";
 import { getRankStats } from "../utils/helpers";
 
@@ -16,7 +15,7 @@ interface Props {
     rankings: Record<string, number | null> & { playerId: number };
 }
 
-const ScoutRankingTable: React.FC<Props> = ({ playerId, rankings }) => {
+const ScoutRankingTable: React.FC<Props> = ({ rankings }) => {
     const scoutEntries = Object.entries(rankings).filter(
         ([key]) => key !== "playerId"
     );

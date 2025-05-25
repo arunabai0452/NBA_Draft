@@ -73,7 +73,6 @@ const PlayerProfile: React.FC<Props> = ({ player }) => {
                 </Button>
             </Box>
             <Grid container spacing={4}>
-                {/* Player Image */}
                 <Grid
                     size={{xs:12, md:4}}
                     sx={{
@@ -97,7 +96,7 @@ const PlayerProfile: React.FC<Props> = ({ player }) => {
                     >
                         <img
                             src={player.photoUrl || "https://cdn.nba.com/headshots/nba/latest/1040x760/1641750.png"}
-                            alt={player.name}
+                            alt={player.name ?? "Unknown player"}
                             style={{
                                 width: "100%",
                                 height: "100%",
@@ -288,7 +287,7 @@ const PlayerProfile: React.FC<Props> = ({ player }) => {
                                                             <Typography variant="body2" sx={{ fontWeight: 600 }}>
                                                                 {label}:
                                                             </Typography>
-                                                            <Typography variant="body2">{Math.round(val)}</Typography>
+                                                            <Typography variant="body2">{typeof val === 'number' && Math.round(val)}</Typography>
                                                         </Stack>
                                                     </Grid>
                                                 );

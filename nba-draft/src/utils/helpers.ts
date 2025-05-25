@@ -1,7 +1,3 @@
-import { seasonLogs } from './../assets/data/index';
-// src/utils/helpers.ts
-
-
 interface GameLog {
   playerId: number;
   pts: number;

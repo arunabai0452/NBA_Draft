@@ -15,10 +15,10 @@ import PlayerCard from "./PlayerCard";
 type Player = typeof playerBio[number];
 type ScoutRank = typeof scoutRankings[number];
 
-interface PlayerWithRank extends Player {
+type PlayerWithRank = Player & {
     avgRank: number;
     ranks: ScoutRank;
-}
+};
 
 const BigBoard: React.FC = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -186,7 +186,6 @@ const BigBoard: React.FC = () => {
                                 playerId={player.playerId}
                                 name={player.name}
                                 team={player.currentTeam}
-                                position={player.position}
                                 photoUrl={player.photoUrl}
                                 avgRank={player.avgRank}
                                 height={player.height}

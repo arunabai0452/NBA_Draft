@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Box } from "@mui/material";
-import { redirect } from "react-router-dom";
 import BigBoard from "../components/BigBoard";
 
 const Home: React.FC = () => {

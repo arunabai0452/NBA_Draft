@@ -6,9 +6,10 @@ import { Container, Typography, Box } from "@mui/material";
 import PlayerProfile from "../components/PlayerProfile";
 import { playerBio } from "../assets/data";
 
+
 const Profile: React.FC = () => {
     const { id } = useParams<{ id: string }>();
-    const player = playerBio.find((p) => p.playerId.toString() === id);
+    const player : any = playerBio.find((p) => p.playerId.toString() === id);
 
     if (!player) {
         return (

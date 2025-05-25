@@ -13,15 +13,14 @@ interface Props {
     playerId: number;
     name: string;
     team: string;
-    position: string;
-    photoUrl: string;
+    photoUrl: string | null;
     avgRank: number;
     height?: number;
     weight?: number;
     birthDate?: string;
-    highSchool?: string;
+    highSchool: string | null;
     homeTown?: string;
-    homeState?: string;
+    homeState: string | null;
     homeCountry?: string;
     nationality?: string;
 }
@@ -30,7 +29,6 @@ const PlayerCard: React.FC<Props> = ({
     playerId,
     name,
     team,
-    position,
     photoUrl,
     avgRank,
     height,

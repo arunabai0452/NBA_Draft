@@ -1,4 +1,4 @@
-# NBA Player Profile React App
+# NBA Player Profile React App 🏀
 
 This React application displays NBA player profiles using Material-UI components. It features player cards with detailed stats and individual profile pages with additional information.
 

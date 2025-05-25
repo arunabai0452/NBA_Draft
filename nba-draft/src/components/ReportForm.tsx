@@ -9,51 +9,79 @@ import {
     DialogContentText,
     DialogActions,
 } from "@mui/material";
+import { v4 as uuidv4 } from "uuid";
 
-interface Props {
-    onSubmit: (report: string) => void;
+interface ScoutingReport {
+    scout: string;
+    reportId: string;
+    playerId: number;
+    report: string;
 }
 
-const ReportForm: React.FC<Props> = ({ onSubmit }) => {
-    const [value, setValue] = useState<string>("");
+interface Props {
+    onSubmit: (report: ScoutingReport) => void;
+    playerId: number;
+}
+
+const ReportForm: React.FC<Props> = ({ onSubmit, playerId }) => {
+    const [scoutName, setScoutName] = useState<string>("");
+    const [reportText, setReportText] = useState<string>("");
     const [confirmOpen, setConfirmOpen] = useState<boolean>(false);
 
     const handleFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (value.trim()) {
+        if (scoutName.trim() && reportText.trim()) {
             setConfirmOpen(true); // Open confirmation dialog
         }
     };
 
     const handleConfirm = () => {
-        onSubmit(value.trim()); // Submit after confirmation
-        setValue("");
+        const newReport: ScoutingReport = {
+            scout: scoutName.trim(),
+            reportId: uuidv4(),
+            playerId,
+            report: reportText.trim(),
+        };
+
+        onSubmit(newReport); 
+        setScoutName("");
+        setReportText("");
         setConfirmOpen(false);
     };
 
     const handleCancel = () => {
-        setConfirmOpen(false); // Close dialog without submitting
+        setConfirmOpen(false);
     };
 
     return (
         <>
             <Box component="form" onSubmit={handleFormSubmit} sx={{ mb: 2 }}>
                 <TextField
+                    label="Scout Name"
+                    value={scoutName}
+                    onChange={(e) => setScoutName(e.target.value)}
+                    fullWidth
+                    sx={{ mb: 2 }}
+                />
+                <TextField
                     label="Add Scouting Report"
                     placeholder="Write your evaluation here..."
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
+                    value={reportText}
+                    onChange={(e) => setReportText(e.target.value)}
                     fullWidth
                     multiline
                     rows={3}
                     sx={{ mb: 2 }}
                 />
-                <Button type="submit" variant="contained" disabled={!value.trim()}>
+                <Button
+                    type="submit"
+                    variant="contained"
+                    disabled={!scoutName.trim() || !reportText.trim()}
+                >
                     Submit Report
                 </Button>
             </Box>
 
-            {/* Confirm Dialog */}
             <Dialog open={confirmOpen} onClose={handleCancel}>
                 <DialogTitle>Confirm Submission</DialogTitle>
                 <DialogContent>

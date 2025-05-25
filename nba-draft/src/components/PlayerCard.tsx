@@ -64,19 +64,24 @@ const PlayerCard: React.FC<Props> = ({
         >
             <Box
                 sx={{
-                    height: {
-                        xs: 200,
-                        sm: 200,
-                        md: 300,
-                    },
-                    backgroundImage: `url(${imageUrl})`,
-                    backgroundSize: "contain",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
+                    width: "100%",
+                    height: { xs: 200, sm: 250, md: 300 },
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                     backgroundColor: "#f0f0f0",
                 }}
-            />
-
+            >
+                <img
+                    src={imageUrl}
+                    alt={name}
+                    style={{
+                        maxWidth: "100%",
+                        maxHeight: "100%",
+                        objectFit: "contain",
+                    }}
+                />
+            </Box>
             <CardContent>
                 <Typography variant="h6" fontWeight="bold" gutterBottom align="center">
                     {name}

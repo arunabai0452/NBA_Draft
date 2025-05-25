@@ -1,5 +1,3 @@
-// src/components/PlayerProfile.tsx
-
 import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -41,16 +39,23 @@ interface Props {
     player: Player;
 }
 
+interface ScoutingReport {
+    scout: string;
+    reportId: string;
+    playerId: number;
+    report: string;
+}
+
 const playerMeasurements: Measurements[] = measurements;
 
 const PlayerProfile: React.FC<Props> = ({ player }) => {
-    const [reportList, setReportList] = useState<string[]>([]);
+    const [reportList, setReportList] = useState<ScoutingReport[]>([]);
     const navigate = useNavigate();
     const [statMode, setStatMode] = useState<"perGame" | "totals">("perGame");
     const [selectedGameId, setSelectedGameId] = useState<number | "">("");
 
-    const handleAddReport = (report: string) => {
-        setReportList((prev) => [report, ...prev]);
+    const handleAddReport = (newReport: ScoutingReport) => {
+        setReportList((prev) => [newReport, ...prev]);
     };
 
     const logs = useMemo(() => getGameLogsByPlayer(player.playerId, gameLogs), [player.playerId]);
@@ -399,11 +404,22 @@ const PlayerProfile: React.FC<Props> = ({ player }) => {
             <Divider sx={{ my: 4 }} />
 
             <Typography variant="h6" gutterBottom>Scouting Reports</Typography>
-            <ReportForm onSubmit={handleAddReport} />
+            <ReportForm onSubmit={handleAddReport} playerId={player.playerId} />
+            {reportList.length > 0 && (
+                <Typography variant="h6" sx={{ mt: 4, mb: 2 }}>
+                    Submitted Reports
+                </Typography>
+            )}
+
             <Box component="ul" sx={{ pl: 3 }}>
-                {reportList.map((r, idx) => (
-                    <li key={idx}>
-                        <Typography variant="body2">{r}</Typography>
+                {reportList.map((r) => (
+                    <li key={r.reportId}>
+                        <Typography variant="subtitle2" fontWeight="bold">
+                            {r.scout}:
+                        </Typography>
+                        <Typography variant="body2" sx={{ mb: 2 }}>
+                            {r.report}
+                        </Typography>
                     </li>
                 ))}
             </Box>

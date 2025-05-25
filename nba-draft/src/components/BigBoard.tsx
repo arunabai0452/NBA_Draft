@@ -96,7 +96,6 @@ const BigBoard: React.FC = () => {
 
     return (
         <Box sx={{ p: 2 }}>
-            {/* Header */}
             <Box display="flex" alignItems="center" justifyContent="center" mb={2}>
                 <Typography
                     variant="h3"
@@ -201,15 +200,15 @@ const BigBoard: React.FC = () => {
                     ))}
                 </Box>
 
-                {/* Right Arrow */}
+
                 {canScrollRight && (
                     <IconButton
                         onClick={() => scroll("right")}
                         sx={{
                             position: "absolute",
                             right: {
-                                xs: -30,
-                                sm: -30,
+                                xs: -40,
+                                sm: -40,
                                 md: -40,
                             },
                             top: "50%",

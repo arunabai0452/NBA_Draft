@@ -1,54 +1,53 @@
-# React + TypeScript + Vite
+# NBA Player Profile React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This React application displays NBA player profiles using Material-UI components. It features player cards with detailed stats and individual profile pages with additional information.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Player Cards**: Show player photo, team, height, weight, nationality, and average rank.
+- **Profile Page**: Detailed player information with a background image and Mavericks branding.
+- **Responsive Design**: Optimized layout for mobile and desktop.
+- **React Router**: Navigates between home page and player profile pages.
+- **Material-UI**: Modern UI components and theming.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- React (with TypeScript)
+- React Router DOM
+- Material-UI (MUI)
+- TypeScript
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js (>=14)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/nba-player-profile.git
+   cd nba-player-profile
+2. Install dependencies:
+
+   npm install
+  # or
+  yarn install
+
+3. Start the development server:
+ npm start
+  # or
+  yarn start
+
+4. Open http://localhost:3000 to view the app in your browser.

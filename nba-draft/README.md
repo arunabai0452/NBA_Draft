@@ -42,12 +42,12 @@ Make sure you have the following installed:
 2. Install dependencies:
 
    npm install
-  # or
+   or
   yarn install
 
 3. Start the development server:
  npm start
-  # or
+   or
   yarn start
 
 4. Open http://localhost:3000 to view the app in your browser.
